@@ -1,0 +1,89 @@
+<div class="card">
+
+    <div class="row row-grid align-items-center">
+        <div class="col-md-12">
+            <div class="card-header">
+                <div class="row row-grid">
+                    <ng-container>
+                        <div class="col-md-6">
+                            <h5>{{modulosStr}}</h5>
+                        </div>
+                        <div class="col-md-6 me-auto text-end">
+                            <button type="button" (click)="agregar()" clickable class="btn btn-default"
+                                data-toggle="modal">Agregar {{moduloStr}}</button>
+                        </div>
+                        <ng-template let-c="close" let-d="dismiss"></ng-template>
+
+                    </ng-container>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-striped " >
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-md-1">ID</th>
+                                    <th scope="col" class="col-md-3">Nombre</th>
+                                    <th scope="col" class="col-md-4">Correo</th>
+                                    <th scope="col" class="col-md-2">Telefono</th>
+                                    <th scope="col" class="col-md-2" colspan="2">
+                                        <input type="text" class="form-control form-control-sm" name="filter" [(ngModel)]="genFilter"
+            (keyup)="consultar()" placeholder="Filtrar">
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="ents.length > 0">
+                                <tr *ngFor="let ent of ents; let i = index">
+                                    <th scope="row">{{ent.id}}</th>
+                                    <td>{{ent.nombre}}</td>
+                                    <td>{{ent.email}}</td>
+                                    <td>{{ent.telefono}}</td>
+                                    <td>
+                                        <ng-container>
+                                            <button type="button" (click)="editar(ent)" clickable
+                                                class="btn btn-default btn-sm" data-toggle="modal">Editar</button>
+                                            <ng-template let-c="close" let-d="dismiss"></ng-template>
+
+                                        </ng-container>
+                                    </td>
+                                    <td>
+                                        <ng-container>
+                                            <button type="button" (click)="borrar(ent)" clickable
+                                                class="btn btn-default btn-sm" data-toggle="modal">Borrar</button>
+                                            <ng-template let-c="close" let-d="dismiss"></ng-template>
+
+                                        </ng-container>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="col"><input type="text" name="entries" class="form-control"
+                                            [(ngModel)]="dataDatable._entries" (keyup)="consultar()"></th>
+                                    <th scope="col" colspan="3">Mostrando {{dataDatable._entries}} de
+                                        {{dataDatable._count}}
+                                    </th>
+                                    <th scope="col" colspan="2">
+                                        <button *ngFor="let page of pages" type="button" (click)="goToPage(page)"
+                                            clickable class="btn btn-default btn-sm">{{page}}</button>
+                                    </th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>

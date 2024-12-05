@@ -1,0 +1,23 @@
+<div class="logo">
+    <ul class="nav">
+        <li class="nav-item">
+            <a>
+                <img src="./assets/img/brand/logo.jpg" style="width: 40%; margin-left: 20%;">
+            </a>
+            
+        </li>
+    </ul>
+    
+</div>
+<div class="sidebar-wrapper">
+    
+    <ul class="nav">
+        
+        <li *ngFor="let menuItem of menuItems" class="nav-item">
+            <a routerLink="{{menuItem.path}}">
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
